@@ -15,7 +15,7 @@ See `(PVector[]) Boid.update().rules` for all `PVector` based velocity rules.
 + Mouse drag to create walls.
 + <kbd>a</kbd> to spawn 10 BOIDS under the cursor.
 + <kbd>space</kbd> to spawn 10 BOIDS with random position.
-+ <kbd>r</kbd> to generate a new maximum flock.
++ <kbd>r</kbd> to generate a new full flock (specified by `(int) MAX_BOIDS_LENGTH`.
 + <kbd>o</kbd> to draw a random circle wall.
 + <kbd>l</kbd> to draw a random line wall.
 + <kbd>c</kbd> to clear all drawn walls.
