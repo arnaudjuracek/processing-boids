@@ -10,7 +10,7 @@ int
 
 PApplet THIS;
 Flock flock;
-ArrayList<PVector> LINE;
+ArrayList<PVector> WALLS;
 PVector cur, tcur, pcur;
 
 void setup(){
@@ -19,8 +19,8 @@ void setup(){
 	size(1200, 800, P2D);
 	background(20);
 
-	flock = new Flock(MAX_BOIDS_LENGTH);
-	LINE = new ArrayList<PVector>();
+	flock = new Flock(2);
+	WALLS = new ArrayList<PVector>();
 	cur = new PVector(mouseX, mouseY);
 
 	// RANDOMIZE LEADER START POSITION
@@ -29,7 +29,7 @@ void setup(){
 
 
 void draw(){
-	// background(0);
+	// background(20);
 	fill(20, 45); noStroke(); rect(0,0,width,height);
 	flock.update();
 
@@ -47,10 +47,10 @@ void draw(){
 
 	// WALLS
 	stroke(63, 89, 224, 10); strokeWeight(20);
-	for(PVector p : LINE) point(p.x, p.y);
+	for(PVector p : WALLS) point(p.x, p.y);
 
 	// LEADER DESTRUCTS WALL
-	Iterator<PVector> iter = LINE.iterator();
+	Iterator<PVector> iter = WALLS.iterator();
 	while(iter.hasNext()){
 		PVector p = iter.next();
 		if(flock.LEADER.dist(p) < 30) iter.remove();
@@ -58,11 +58,13 @@ void draw(){
 }
 
 
-void mouseDragged(){ LINE.add(new PVector(cur.x, cur.y)); }
+void mouseDragged(){ WALLS.add(new PVector(cur.x, cur.y)); }
 void keyPressed(){
 	if(key == 'a'){
-		flock.BOIDS.add(new Boid(flock, new PVector(mouseX, mouseY)));
-		flock.clean();
+		for(int i=0; i<10; i++){
+			flock.BOIDS.add(new Boid(flock, new PVector(mouseX, mouseY)));
+			flock.clean();
+		}
 	}
 	if(key == ' ') for(int i=0; i<10; i++) flock.BOIDS.add(new Boid(flock, new PVector(random(-width,width), random(-height, height))));
 	if(key == 'r') flock = new Flock(MAX_BOIDS_LENGTH);
@@ -72,7 +74,7 @@ void keyPressed(){
 			x = constrain(random(width), r, width - r),
 			y = constrain(random(height), r, height - r),
 			c = 2*PI*r;
-		for(int a=0; a<c; a+=5) LINE.add(new PVector(x + sin(a)*r, y + cos(a)*r));
+		for(int a=0; a<c; a+=5) WALLS.add(new PVector(x + sin(a)*r, y + cos(a)*r));
 	}
 	if(key == 'l'){
 		float
@@ -81,7 +83,7 @@ void keyPressed(){
 			tx = random(width),
 			ty = random(height),
 			d = dist(x,y,tx,ty);
-		for(int i=0; i<d; i+=5) LINE.add(new PVector(lerp(x,tx,map(i,0,d,0,1)),lerp(y,ty,map(i,0,d,0,1))));
+		for(int i=0; i<d; i+=5) WALLS.add(new PVector(lerp(x,tx,map(i,0,d,0,1)),lerp(y,ty,map(i,0,d,0,1))));
 	}
-	if(key == 'c') LINE.clear();
+	if(key == 'c') WALLS.clear();
 }

@@ -32,7 +32,7 @@ class Boid{
 			this.FLOCK.fly_towards_centre_of_masse(this).mult(keyPressed && key == 's' ? -10 : 1),
 			this.FLOCK.avoid_neighbors(this, this.DISTANCE),
 			this.FLOCK.avoid_object(this, new PVector(mouseX, mouseY), this.RND*50),
-			this.FLOCK.avoid_objects(this, LINE, 20),
+			this.FLOCK.avoid_objects(this, WALLS, 20),
 			this.FLOCK.match_neighbors_velocity(this).div(this.RND),
 			// this.FLOCK.fly_towards_direction(this, new PVector(0, 1)),
 			// this.FLOCK.wander(this),
