@@ -4,8 +4,8 @@
 BOIDS study, based on BOIDS pseudo-code http://www.vergenet.net/~conrad/boids/pseudocode.html
 
 ##Source code
-+ `(int) MAX_SPEED` : the speed each boid is limited to.
-+ `(int) AVOIDING_DISTANCE` : the distance from which each boid tend to avoid its neighbor.
++ `(int) MAX_SPEED` : the speed each BOID is limited to.
++ `(int) AVOIDING_DISTANCE` : the distance from which each BOID tend to avoid its neighbor.
 + `MAX_BOIDS_LENGTH`: kill first BOIDS when this limit is reached.
 
 See `(PVector[]) Boid.update().rules` for all `PVector` based velocity rules.
@@ -19,6 +19,6 @@ See `(PVector[]) Boid.update().rules` for all `PVector` based velocity rules.
 + <kbd>o</kbd> to draw a random circle wall.
 + <kbd>l</kbd> to draw a random line wall.
 + <kbd>c</kbd> to clear all drawn walls.
-+ 
+
 ---
 Arnaud Juracek, GNU GENERAL PUBLIC LICENSE Version 2, June 1991
