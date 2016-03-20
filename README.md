@@ -6,7 +6,7 @@ BOIDS study, based on BOIDS pseudo-code http://www.vergenet.net/~conrad/boids/ps
 ##Source code
 + `(int) MAX_SPEED` : the speed each BOID is limited to.
 + `(int) AVOIDING_DISTANCE` : the distance from which each BOID tend to avoid its neighbor.
-+ `MAX_BOIDS_LENGTH`: kill first BOIDS when this limit is reached.
++ `(int) MAX_BOIDS_LENGTH`: kill first BOIDS when this limit is reached.
 
 See `(PVector[]) Boid.update().rules` for all `PVector` based velocity rules.
 
